@@ -2,8 +2,8 @@ h1 {
     text-align: center;
 }
 
-label {
-    
+h1, h2, h3, label, input, button {
+    font-family: 'Uchen', serif;
 }
 
 body {

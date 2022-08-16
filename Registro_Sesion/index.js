@@ -1,7 +1,7 @@
 const registrar = document.getElementById("registrar")
 
 if (registrar) {
-    registrar.addEventListener("submit", (event) => {
+    registrar.addEventListener("submit", async (event) => {
         event.preventDefault()
         const nombres = document.getElementById("nombres")
         const apellidos = document.getElementById("apellidos")
@@ -36,22 +36,27 @@ if (registrar) {
                 Swal.fire({
                     icon: 'succes',
                     title: '¡Lo lograste!',
-                    text: 'Te pudiste registrar exitósamente'
-                })
-
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
+                    text: 'Te pudiste registrar exitósamente', 
                     confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                  }).then((result) => {
+                }).then((result) => {
                     if (result.isConfirmed) {
                       window.location.href = "/"
                     }
-                  })
+                })
+
+                // Swal.fire({
+                //     title: 'Are you sure?',
+                //     text: "You won't be able to revert this!",
+                //     icon: 'warning',
+                //     showCancelButton: true,
+                //     confirmButtonColor: '#3085d6',
+                //     cancelButtonColor: '#d33',
+                //     confirmButtonText: 'Yes, delete it!'
+                //   }).then((result) => {
+                //     if (result.isConfirmed) {
+                //       window.location.href = "/"
+                //     }
+                //   })
             } else {
                 Swal.fire({
                     icon: 'error',

@@ -17,21 +17,23 @@ const init = async () => {
         taskListElement.innerHTML = ''
         data.data.forEach((element) => {
             let fondo = 'background-color: '
-            switch (element.date) {
-                case "1":
-                case "2":
+            switch (element.priority) {
+                case 1:
+                case 2:
                     fondo += 'blue; color: white;'
                     break;
-                case "3":
-                case "4":
+                case 3:
+                case 4:
                     fondo += 'yellow;'
                     break;
-                case "5":
+                case 5:
                     fondo += 'red; color: white;'
                 default:
                     break;
             }
-            const fecha = new Date(inputDate.value)
+            console.log(fondo);
+            console.log(element.priority);
+            const fecha = new Date(element.date)
             const dia = fecha.getDate() + 1
             const mes = fecha.getMonth() + 1
             const fecha_real = `${(dia <= 9) ? "0" + dia : dia}/${(mes <= 9) ? "0" + mes : mes}/${fecha.getFullYear()}`
@@ -67,9 +69,22 @@ const boton = document.getElementById("boton-borrar")
 
 let cantidad = document.getElementById("label-cantidad")
 
-const dar_numeros = () => {
-    let taskListElement = document.getElementById("task-list")
-    cantidad.textContent = "Listado de tareas: " + taskListElement.children.length
+const dar_numeros = async () => {
+    try {
+        const token = localStorage.getItem("token")
+        const response = await fetch("https://graco-task-list.herokuapp.com/task", {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        // transformar a JSON
+        const data = await response.json()
+        cantidad.textContent = "Listado de tareas: " + data.data.length
+        console.log(data.data);
+    } catch (error) {
+        console.error(error)
+        console.log("hubo un error");
+    }
 }
 
 dar_numeros()
@@ -137,7 +152,6 @@ if (formElement) {
         const inputDate = document.getElementById("taskDate")
 
         console.log(inputDate.value);
-        
         if (inputElement.value !== "" && inputDate.value !== "") {
             // buscar el select
             const selectElement = document.getElementById("taskPriority")
@@ -156,7 +170,7 @@ if (formElement) {
                 default:
                     break;
             }
-
+            console.log(fondo);
             const fecha = new Date(inputDate.value)
             const dia = fecha.getDate() + 1
             const mes = fecha.getMonth() + 1

@@ -105,6 +105,7 @@ const deleteTask = async (id) => {
     // buscamos etiqueta li por el id
     // const elementToDelete = document.getElementById(id)
     const a = await dar_data(`https://graco-task-list.herokuapp.com/task/${id}`, "DELETE")
+    console.log("borrado");
     // eliminamos etiqueta li
     // taskListElement.removeChild(elementToDelete)
     if (a.response.status !== 200) {
@@ -123,6 +124,7 @@ const deleteTask = async (id) => {
     if (a.data.data.length == 0) {
         boton.style.display = "none"
     } else boton.style.display = "block"
+    console.log("borrar");
     llenar()
 }
 
@@ -200,7 +202,8 @@ if (formElement) {
                 title: '¡Funcionó!',
                 text: '¡Se agregó una nueva tarea!'
             })
-            if (taskListElement.children.length > 0) boton.style.display = "block"; else boton.style.display = "none"
+            if (a.data.data.length > 0) boton.style.display = "block"; else boton.style.display = "none"
+            console.log("llenar");
             llenar()
 
         } else {

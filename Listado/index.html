@@ -17,11 +17,57 @@
     <title>Listado de tareas</title>
 </head>
 <body>
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Listado de tareas</a>
+        </div>
+    </nav> -->
     <header>
         <h1>Listado de tareas</h1>
     </header>
-    <main>
-        
-    </main>
+    <div class="container-lg pt-5 d-flex justify-content-around flex-column flex-sm-row">
+        <!-- formulario -->
+        <div class="card w-auto d-inline-block mb-5  shadow">
+            <!-- tarjeta izquierda -->
+            <div class="card-body">
+                <p class="card-title">Agregar tarea</p>
+                <hr>
+                <form id="task-form">
+                    <!-- campo para el nombre de la tarea -->
+                    <div class="mb-3">
+                        <label for="taskName" class="form-label">Nombre de la tarea</label>
+                        <input name="taskName" class="form-control" id="taskName" placeholder="do something...">
+                    </div>
+                    <div class="mb-3">
+                        <label for="taskPriority" class="form-label">Prioridad de la tarea</label>
+                        <select name="taskPriority" class="form-select" id="taskPriority"
+                            aria-label="Default select example">
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="taskDate" class="form-label">Fecha</label>
+                        <input type="date" class="form-control" name="taskDate" id="taskDate" >
+                    </div>
+                    <button id="add-task-btn" type="submit" class="btn btn-primary w-100">Agregar tarea</button>
+                </form>
+            </div>
+        </div>
+        <!-- listado -->
+        <div class="card w-auto d-inline-block mb-5  shadow">
+            <div class="card-body">
+                <p class="card-title" id="label-cantidad" name="label-cantidad">Listado de tareas</p>
+                <ol id="task-list" class="list-group list-group-numbered w-100" style="max-width: 500px;">
+                </ol>
+                <div class="mt-5">
+                    <button type="submit" id="boton-borrar" name="boton-borrar" class="btn btn-danger w-100" style="display: none;">Borrar todo</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

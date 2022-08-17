@@ -1,18 +1,32 @@
 // aqui va todo el código
 console.log("hola mundo")
 
-const init = async () => {
+const dar_data = async (url) => {
     try {
-        // llamar api
         const token = localStorage.getItem("token")
-        const response = await fetch("https://graco-task-list.herokuapp.com/task", {
+        const response = await fetch(url, {
             headers: {
                 'Authorization': `Bearer ${token}`
-            }
+            },
+            body: null
         })
         // transformar a JSON
         const data = await response.json()
         console.log(data.data);
+        return {
+            data, response
+        }
+    } catch (error) {
+        console.error(error)
+        console.log("hubo un error");
+    }
+}
+
+const init = async () => {
+    try {
+        // llamar api
+        const a = await dar_data("https://graco-task-list.herokuapp.com/task")
+        const data = a.data
         const taskListElement = document.getElementById("task-list")
         taskListElement.innerHTML = ''
         data.data.forEach((element) => {
@@ -57,7 +71,6 @@ const init = async () => {
             </li>
             `
         });
-
     } catch (error) {
         console.error(error)
         console.log("hubo un error");
@@ -71,14 +84,8 @@ let cantidad = document.getElementById("label-cantidad")
 
 const dar_numeros = async () => {
     try {
-        const token = localStorage.getItem("token")
-        const response = await fetch("https://graco-task-list.herokuapp.com/task", {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        })
-        // transformar a JSON
-        const data = await response.json()
+        const a = await dar_data("https://graco-task-list.herokuapp.com/task")
+        const data = a.data
         cantidad.textContent = "Listado de tareas: " + data.data.length
         console.log(data.data);
     } catch (error) {

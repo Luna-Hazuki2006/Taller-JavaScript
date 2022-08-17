@@ -32,7 +32,7 @@ if (iniciar) {
             const data = await response.json()
             if (response.status === 200) {
                 Swal.fire({
-                    icon: 'succes',
+                    icon: 'success',
                     title: '¡Lo lograste!',
                     confirmButtonColor: '#3085d6',
                     text: 'Te pudiste iniciar exitósamente'

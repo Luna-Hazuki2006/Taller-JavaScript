@@ -16,12 +16,31 @@ const init = async () => {
         const taskListElement = document.getElementById("task-list")
         taskListElement.innerHTML = ''
         data.data.forEach((element) => {
+            let fondo = 'background-color: '
+            switch (element.date) {
+                case "1":
+                case "2":
+                    fondo += 'blue; color: white;'
+                    break;
+                case "3":
+                case "4":
+                    fondo += 'yellow;'
+                    break;
+                case "5":
+                    fondo += 'red; color: white;'
+                default:
+                    break;
+            }
+            const fecha = new Date(inputDate.value)
+            const dia = fecha.getDate() + 1
+            const mes = fecha.getMonth() + 1
+            const fecha_real = `${(dia <= 9) ? "0" + dia : dia}/${(mes <= 9) ? "0" + mes : mes}/${fecha.getFullYear()}`
             taskListElement.innerHTML += `
             <li id="${element._id}" class="list-group-item d-flex justify-content-between align-items-center"
-                style="word-break: keep-all; ">
+                style="word-break: keep-all; ${fondo}">
                 <div class="mx-2 text-start" style="flex: 1;">
                     <div class="fw-bold">${element.name}</div>
-                    <div>${element.date}</div>
+                    <div>${fecha_real}</div>
                 </div>
                     
                 </div>

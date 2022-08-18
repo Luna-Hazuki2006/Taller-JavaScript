@@ -171,7 +171,7 @@ if (boton) {
             }).then(async (result) => {
             if (result.isConfirmed) {
                 console.log("Eliminando tareas");
-                const audio = new Audio("assets/Man falls down stairs meme.mp3")
+                const audio = new Audio("../assets/Man falls down stairs meme.mp3")
                 audio.play()
                 const a = await dar_data("https://graco-task-list.herokuapp.com/task/delete/all")
                 console.log(a.response.status);

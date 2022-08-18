@@ -25,6 +25,24 @@ const dar_data = async (url, method = "GET", body = null) => {
     }
 }
 
+const cerrar = document.getElementById('cerrar')
+cerrar.addEventListener('click', () => {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¡El cerrar sesión hará que también salgas de esta ventada D:!",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, ¡quiero cerrar sesión!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.removeItem('token')
+                window.location.href = '/'
+            }
+        })
+})
+
 const llenar = async () => {
     try {
         // llamar api

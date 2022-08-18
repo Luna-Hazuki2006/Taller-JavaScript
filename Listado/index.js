@@ -25,10 +25,6 @@ const dar_data = async (url, method = "GET", body = null) => {
     }
 }
 
-const init = () => {
-    
-}
-
 const cerrar = document.getElementById('cerrar')
 cerrar.addEventListener('click', () => {
     Swal.fire({
@@ -170,13 +166,15 @@ if (boton) {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, ¡Bórralo todo!'
+            confirmButtonText: 'Si, ¡Bórralo todo!', 
+            cancelButtonText: '¡No, aún tengo cosas que hacer!'
             }).then(async (result) => {
             if (result.isConfirmed) {
                 console.log("Eliminando tareas");
                 const audio = new Audio("assets/Man falls down stairs meme.mp3")
                 audio.play()
                 const a = await dar_data("https://graco-task-list.herokuapp.com/task/delete/all")
+                console.log(a.response.status);
                 if (a.response.status === 200) {
                     Swal.fire(
                         '¡Funcionó!',

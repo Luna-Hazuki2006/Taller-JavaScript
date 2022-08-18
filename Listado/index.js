@@ -205,7 +205,8 @@ if (formElement) {
             if (a.data.data.length > 0) boton.style.display = "block"; else boton.style.display = "none"
             console.log("llenar");
             llenar()
-
+            inputElement.value = ''
+            inputDate.value = ''
         } else {
             Swal.fire({
                 icon: 'error',

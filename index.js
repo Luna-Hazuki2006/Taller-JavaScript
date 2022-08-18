@@ -2,7 +2,7 @@ const iniciar = document.getElementById("iniciar")
 
 const revisar = () => {
     const token = localStorage.getItem('token')
-    token && (window.location.href = 'Listado')
+    token && (window.location.href = '/Listado')
 }
 revisar()
 if (iniciar) {

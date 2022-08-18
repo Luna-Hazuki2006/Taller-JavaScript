@@ -6,6 +6,11 @@ h1, h2, h3, label, input, button, p {
     font-family: 'Uchen', serif;
 }
 
+.similares {
+    text-align: center;
+    gap: 5px;
+}
+
 body {
     background-color: lavenderblush;
 }

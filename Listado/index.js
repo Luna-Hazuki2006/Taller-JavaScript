@@ -121,9 +121,9 @@ const deleteTask = async (id) => {
         '¡Tu tarea ha sido eliminada!',
         'success'
     )
-    if (a.data.data.length == 0) {
+    /*if (a.data.data.length == 0) {
         boton.style.display = "none"
-    } else boton.style.display = "block"
+    } else boton.style.display = "block"*/
     console.log("borrar");
     llenar()
 }

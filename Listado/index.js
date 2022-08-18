@@ -25,6 +25,10 @@ const dar_data = async (url, method = "GET", body = null) => {
     }
 }
 
+const init = () => {
+    
+}
+
 const cerrar = document.getElementById('cerrar')
 cerrar.addEventListener('click', () => {
     Swal.fire({
@@ -34,7 +38,8 @@ cerrar.addEventListener('click', () => {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, ¡quiero cerrar sesión!'
+        confirmButtonText: 'Si, ¡quiero cerrar sesión!', 
+        cancelButtonText: 'No, aún tengo tareas que hacer'
         }).then((result) => {
             if (result.isConfirmed) {
                 localStorage.removeItem('token')

@@ -35,6 +35,7 @@ if (iniciar) {
                 body: JSON.stringify(info)
             })
             const data = await response.json()
+            console.log(JSON.stringify(data));
             if (response.status === 200) {
                 Swal.fire({
                     icon: 'success',

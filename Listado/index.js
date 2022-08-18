@@ -173,7 +173,7 @@ if (boton) {
                 console.log("Eliminando tareas");
                 const audio = new Audio("../assets/Man falls down stairs meme.mp3")
                 audio.play()
-                const a = await dar_data("https://graco-task-list.herokuapp.com/task/delete/all")
+                const a = await dar_data("https://graco-task-list.herokuapp.com/task/delete/all", 'DELETE')
                 console.log(a.response.status);
                 if (a.response.status === 200) {
                     Swal.fire(
@@ -181,8 +181,8 @@ if (boton) {
                         '¡Todo se borró!',
                         'success'
                     )
-                    boton.style.display = "none"
                     console.log("se eliminaron")
+                    llenar()
                 }
             } else boton.style.display = "block"
         })
@@ -219,7 +219,7 @@ if (formElement) {
                 return
             }
             Swal.fire({
-                icon: 'succes',
+                icon: 'success',
                 title: '¡Funcionó!',
                 text: '¡Se agregó una nueva tarea!'
             })
